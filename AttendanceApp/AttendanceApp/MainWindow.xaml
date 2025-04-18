@@ -1,0 +1,84 @@
+﻿<Window x:Class="AttendanceApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AttendanceApp"
+        xmlns:controls="clr-namespace:AttendanceApp.Controls"
+        mc:Ignorable="d"
+        Foreground="{DynamicResource Foreground}"
+        Background="{DynamicResource Background}"
+        Title="Учёт посещаемости" Height="650" Width="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="FullNameText" Text="ФИООООООООООООООООО" FontSize="26" Margin="5,0" FontWeight="SemiBold"/>
+
+            <TextBlock x:Name="CurrentRoleText" Text="Студеет" Margin="0,4" VerticalAlignment="Bottom" FontSize="14"/>
+        </StackPanel>
+
+        <TabControl Background="{DynamicResource Background2}" BorderBrush="{DynamicResource Background4}" Grid.Row="1">
+            <TabItem Header="По месяцам">
+                <controls:Calendar x:Name="StCalendar"/>
+            </TabItem>
+            <TabItem Header="По неделям">
+                <controls:WeekPage x:Name="StWeek"/>
+            </TabItem>
+            <TabItem Header="Фильтр">
+                <controls:FilterPage x:Name="StFilter"/>
+            </TabItem>
+            <TabItem Header="По студенту">
+                <controls:StudentDetailsPage x:Name="StStudent"/>
+            </TabItem>
+            <TabItem x:Name="AdminTab" Header="Админ-панель">
+                <controls:AdminPage x:Name="StAdmin"/>
+            </TabItem>
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem">
+                    <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+                    <Setter Property="Background" Value="{DynamicResource Background1_5}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource Background4}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid SnapsToDevicePixels="True">
+                                    <Border x:Name="VisBorder" Margin="0,2,0,0" Background="{TemplateBinding Background}" BorderThickness="1,1,1,0" BorderBrush="{TemplateBinding BorderBrush}">
+                                        
+                                    </Border>
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="12,4,12,4"
+                                        RecognizesAccessKey="True" />
+                                </Grid>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="VisBorder" Property="Margin" Value="-2,0,-2,-1" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Background2}"/>
+                            <Setter Property="Panel.ZIndex" Value="100"/>
+                        </Trigger>
+
+
+                    </Style.Triggers>
+                </Style>
+            </TabControl.ItemContainerStyle>
+        </TabControl>
+
+
+        <controls:LoginPage x:Name="LoginPanel" Visibility="Collapsed" Grid.RowSpan="2"/>
+    </Grid>
+</Window>

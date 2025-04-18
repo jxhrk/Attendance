@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="AttendanceApp.Controls.FilterPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AttendanceApp.Controls"
+             xmlns:select="clr-namespace:AttendanceApp.Controls.Selectors"
+             mc:Ignorable="d"
+             Foreground="{DynamicResource Foreground}"
+             d:DesignHeight="450" d:DesignWidth="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Группа: " Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <select:GroupSelector x:Name="GroupSelect" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Width="120"/>
+            <TextBlock Text="Предмет: " VerticalAlignment="Center"/>
+            <select:DisciplineSelector x:Name="DisciplineSelect" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Width="220"/>
+            <TextBlock Text="Преподаватель: " VerticalAlignment="Center"/>
+            <select:TeacherSelector x:Name="TeacherSelect" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Width="220"/>
+            <Button Content="&lt;" Width="20" VerticalAlignment="Center" Click="Button_Click"/>
+            <TextBlock x:Name="YearText" Margin="5" Text="2345-2346" VerticalAlignment="Center"/>
+            <Button Content="&gt;" Width="20" VerticalAlignment="Center" Click="Button_Click_1"/>
+
+            <TextBlock Text="Полугодие: " Margin="5,0,0,0" VerticalAlignment="Center"/>
+            <RadioButton x:Name="Term1" Foreground="{DynamicResource Foreground}" Content="1" Margin="0,0,5,0" VerticalAlignment="Center"/>
+            <RadioButton x:Name="Term2" Foreground="{DynamicResource Foreground}" Content="2" Margin="0,0,5,0" VerticalAlignment="Center"/>
+            <RadioButton x:Name="TermAll" Foreground="{DynamicResource Foreground}" Content="Весь год" Margin="0,0,5,0" VerticalAlignment="Center"/>
+        </StackPanel>
+        <local:DataGrid2DArray x:Name="ResultsGrid" Grid.Row="1"/>
+
+    </Grid>
+</UserControl>

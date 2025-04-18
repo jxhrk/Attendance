@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="AttendanceApp.Controls.Selectors.FullNameInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AttendanceApp.Controls.Selectors"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="FullNameText" Grid.Column="0" TextChanged="TextBox_TextChanged"/>
+        <Border Grid.Column="1" Width="30" x:Name="Indicator" Background="{DynamicResource BackgroundRed}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="F" Text="Ф" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock x:Name="I" Text="И" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock x:Name="O" Text="О" Foreground="{DynamicResource Foreground}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
